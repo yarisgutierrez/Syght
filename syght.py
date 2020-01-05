@@ -7,7 +7,9 @@ import platform
 import socket
 import uuid
 import psutil
+import pprint
 import re
+import docker
 import requests
 import urllib3
 
@@ -70,6 +72,14 @@ def config(source):
 
     return result
 
+# Docker Stuff
+def listContainerInfo():
+    client = docker.from_env()
+    for container in client.containers.list():
+        container_stats = container.stats(stream=False)
+        return container_stats['name'], container_stats['cpu_stats'], \
+               container_stats['memory_stats']
+
 
 def get_version():
     """Gets BigID release"""
@@ -82,6 +92,10 @@ def get_version():
 
 
 def processors():
+    """
+    Obtain detailed CPU information including model, clock speed,
+    and number of cores/CPUs
+    """
     with open("/proc/cpuinfo", "r") as f:
         info = f.readlines()
 
@@ -112,4 +126,4 @@ def sysInfo():
 
 print(get_version())
 print(sysInfo().replace('"',''))
-pprint(config("sar/config"))
+# pprint(config("sar/config"))
