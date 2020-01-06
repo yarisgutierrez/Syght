@@ -73,6 +73,7 @@ def config(source):
     return result
 
 # Docker Stuff
+# TODO: Identify what data we want
 def listContainerInfo():
     client = docker.from_env()
     for container in client.containers.list():
