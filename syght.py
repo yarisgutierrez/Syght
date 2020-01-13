@@ -126,4 +126,6 @@ def sysInfo():
 
 print(get_version())
 print(sysInfo().replace('"',''))
-# pprint(config("sar/config"))
+pprint(config("ds_connections"))
+#pprint(config("sar/config"))
+pprint(config("id_connections"))
