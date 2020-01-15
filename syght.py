@@ -72,15 +72,6 @@ def config(source):
 
     return result
 
-# Docker Stuff
-# TODO: Identify what data we want
-def listContainerInfo():
-    client = docker.from_env()
-    for container in client.containers.list():
-        container_stats = container.stats(stream=False)
-        return container_stats['name'], container_stats['cpu_stats'], \
-               container_stats['memory_stats']
-
 
 def get_version():
     """Gets BigID release"""
