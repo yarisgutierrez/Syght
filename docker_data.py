@@ -1,19 +1,31 @@
-import json
 import logging
-import docker
+import math
 
 # Define the Docker-related data to gather
 
 logger = logging.getLogger(__name__)
 
 
+def cb(b):
+    """
+    cb == convert bytes
+    """
+    if b == 0:
+        return "0B"
+    size = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+    i = int(math.floor(math.log(b, 1024)))
+    p = math.pow(1024, i)
+    s = round(b / p, 2)
+    return"%s %s" % (s, size[i])
+
+
 def calc_cpu(d):
     cpu_count = len(d["cpu_stats"]["cpu_usage"]["percpu_usage"])
     cpu_percent = 0.0
     cpu_delta = float(d["cpu_stats"]["cpu_usage"]["total_usage"]) - \
-            float(d["precpu_stats"]["cpu_usage"]["total_usage"])
+        float(d["precpu_stats"]["cpu_usage"]["total_usage"])
     sys_delta = float(d["cpu_stats"]["system_cpu_usage"]) - \
-            float(d["precpu_stats"]["system_cpu_usage"])
+        float(d["precpu_stats"]["system_cpu_usage"])
     if sys_delta > 0.0:
         cpu_percent = cpu_delta / sys_delta * 100.0 * cpu_count
     return cpu_percent
@@ -30,7 +42,7 @@ def calc_cpu2(d, prev_cpu, prev_sys):
                                          ["percpu_usage"]))
     if sys_delta > 0.0:
         cpu_percent = (cpu_delta / sys_delta) * online_cpus * 100.0
-    return cpu_percent, cpu_system, cpu_total
+    return cpu_percent, cpu_sys, cpu_total
 
 
 def calc_blkio_bytes(d):
