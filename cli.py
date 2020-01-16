@@ -40,7 +40,7 @@ def container_stats():
             "container_name": container_name,
             "cpu_percent": cpu_percent,
             "mem_current": cb(mem_current),
-            "mem_total": cb(container_stats["memory_stats"]["limit"]),
+            "mem_total": cb(c["memory_stats"]["limit"]),
             "mem_percent": (mem_current / mem_total) * 100.0,
             "blk_read": cb(blk_read),
             "blk_write": cb(blk_write),
