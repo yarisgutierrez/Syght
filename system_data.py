@@ -35,4 +35,4 @@ def sys_info():
         print("Oops! Something went wrong!")
     yield info
 
-pprint(list(sys_info()))
+#pprint(list(sys_info()))

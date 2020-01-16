@@ -1,11 +1,30 @@
+import os
 import json
 import requests
 import urllib3
+from getpass import getpass
 
 # Gather BigID-related Information
 
+if "BIGID_UI_HOST_EXT" in list(os.environ):
+    bigid_url = os.environ["BIGID_UI_HOST_EXT"]
+    bigid_api_url = bigid_url + "/api/v1"
+else:
+    bigid_url = input("BigID URL: ")
+    bigid_api_url = bigid_url + "/api/v1"
 
-def bigi_token():
+if "BIGID_USER" in list(os.environ):
+    bigid_user = os.environ["BIGID_USER"]
+else:
+    bigid_user = input("BigID Username: ")
+
+if "BIGID_PASSWORD" in list(os.environ):
+    bigid_password = os.environ["BIGID_PASSWORD"]
+else:
+    bigid_password = getpass("BigID Password: ")
+
+
+def bigid_token():
     """Retrieve Access Token from BigID"""
     url = bigid_api_url + '/sessions'
     headers = {"Accept": "application/json"}
@@ -14,18 +33,22 @@ def bigi_token():
     response = requests.post(url, data=data, headers=headers, verify=False)
     if response.status_code != 200:
         print("Status:", response.status_code, "Headers:", response.headers,
-              "Response:" response.json())
+              "Response:", response.json())
         print("Cookies", response.cookies)
     data = response.json()
     return data["auth_token"]
 
+
 def bigid_release():
     """Get BigID Release"""
-    print("***** RELEASE INFORMATION *****")
-    url = bigid_url + "about.html"
+    url = bigid_url + "/about.html"
     headers = {}
-    result = requests.get(url, headers=headers)
-    return result.text
+    result = {
+        "release-info": requests.get(url,
+                                     headers=headers).text.replace("\n",' ')
+    }
+    return result
+
 
 def config(source):
     """
@@ -37,7 +60,7 @@ def config(source):
     sar/config: Returns SAR Configuration
     """
     token = bigid_token()
-    url = bigid_api_url + "/" source
+    url = bigid_api_url + "/" + source
     payload = {}
     headers = {"Authorization": token}
     response = requests.request("GET", url, headers=headers, data=payload)
