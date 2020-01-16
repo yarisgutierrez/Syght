@@ -6,6 +6,9 @@ from getpass import getpass
 
 # Gather BigID-related Information
 
+# Disable HTTPS Cert Warnings
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 if "BIGID_UI_HOST_EXT" in list(os.environ):
     bigid_url = os.environ["BIGID_UI_HOST_EXT"]
     bigid_api_url = bigid_url + "/api/v1"

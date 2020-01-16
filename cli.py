@@ -13,14 +13,22 @@ from docker_data import calc_cpu, calc_cpu2, calc_blkio_bytes,\
 
 
 def main():
-    json_data = {
+    env_data = {
         'bigid_release': bigid_release(),
         'system_information': list(sys_info()),
-        'data_sources': config("ds_connections")
     }
-    # pprint(config("ds_connections"))
-    with open('bigid_analysis.json', 'w', encoding='utf-8') as f:
-        json.dump(json_data, f, ensure_ascii=False, indent=4)
+
+    # Export Environment Information
+    with open('environment.json', 'w', encoding='utf-8') as f:
+        json.dump(env_data, f, ensure_ascii=False, indent=4)
+
+    # Export Data Sources
+    with open('ds_connections.json', 'w', encoding='utf-8') as f:
+        json.dump(config("ds_connections"), f, ensure_ascii=False, indent=4)
+
+    # Export Entity Sources
+    with open('entity_sources.json', 'w', encoding='utf-8') as f:
+        json.dump(config("id_connections"), f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     sys.exit(main())
