@@ -27,7 +27,7 @@ def container_stats():
         net_r, net_w = calc_network_bytes(c)
         mem_current = c["memory_stats"]["usage"]
         mem_total = c["memory_stats"]["limit"]
-        blk_read, blk_write = calc_blkio_bytes[c]
+        blk_read, blk_write = calc_blkio_bytes(c)
 
         try:
             cpu_percent, cpu_sys, cpu_total = \
