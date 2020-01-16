@@ -51,11 +51,15 @@ def container_stats():
         yield r
 
 
+dev env_var():
+    for k, v in os.environ.items():
+        yield(f'{k}: {v}')
+
 def main():
     env_data = {
         'bigid_release': bigid_release(),
         'system_information': list(sys_info()),
-        'environment_variables': os.environ
+        'environment_variables': list(env_var())
     }
 
     # Export Environment Information
