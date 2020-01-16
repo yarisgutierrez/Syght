@@ -51,9 +51,10 @@ def container_stats():
         yield r
 
 
-dev env_var():
+def env_var():
     for k, v in os.environ.items():
         yield(f'{k}: {v}')
+
 
 def main():
     env_data = {
