@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import json
 import docker
@@ -54,6 +55,7 @@ def main():
     env_data = {
         'bigid_release': bigid_release(),
         'system_information': list(sys_info()),
+        'environment_variables': os.environ
     }
 
     # Export Environment Information

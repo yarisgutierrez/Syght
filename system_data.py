@@ -2,9 +2,8 @@ import platform
 import socket
 import re
 import uuid
-import json
 import psutil
-from pprint import pprint
+
 
 def processors():
     """
@@ -34,5 +33,3 @@ def sys_info():
     except Exception:
         print("Oops! Something went wrong!")
     yield info
-
-#pprint(list(sys_info()))
