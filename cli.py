@@ -62,7 +62,7 @@ def main():
 
     # Export Container Information
     with open('containers.json', 'w', encoding='utf-8') as f:
-        json.dump(container_stats(), f, ensure_ascii=False, indent=4)
+        json.dump(list(container_stats()), f, ensure_ascii=False, indent=4)
 
     # Export Data Sources
     with open('ds_connections.json', 'w', encoding='utf-8') as f:
