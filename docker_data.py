@@ -89,3 +89,38 @@ def chain_get(d, *args, default=None):
             logger.debug("can't get %r from %s", a, t)
         return default
     return t
+
+def container_stats():
+    """
+    Get resource statistics for containers
+    """
+    cpu_total = 0.0
+    cpu_sys = 0.0
+    cpu_percent = 0.0
+    client = docker.from_env()
+    for container in client.containers.list():
+        c = container.stats(stream=False)
+        container_name = c["name"]
+        net_r, net_w = calc_network_bytes(c)
+        mem_current = c["memory_stats"]["usage"]
+        mem_total = c["memory_stats"]["limit"]
+        blk_read, blk_write = calc_blkio_bytes(c)
+
+        try:
+            cpu_percent, cpu_sys, cpu_total = \
+                    calc_cpu2(c, cpu_total, cpu_sys)
+        except KeyError as e:
+            logger.error("error while getting new CPU stats: %r, falling back")
+            cpu_percent = calc_cpu(c)
+
+        r = {
+            "container_name": container)name,
+            "cpu_percent": cpu_percent,
+            "mem_total": cb(c["memory_stats"]["limit"]),
+            "mem_percent": (mem_current / mem_total) * 100.0,
+            "blk_read": cb(blk_read),
+            "blk_write": cb(blk_write),
+            "net_rx": cb(net_r),
+            "net_tx": cb(net_w),
+        }
+        yield r
