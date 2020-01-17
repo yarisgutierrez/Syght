@@ -114,7 +114,7 @@ def container_stats():
             cpu_percent = calc_cpu(c)
 
         r = {
-            "container_name": container)name,
+            "container_name": container_name,
             "cpu_percent": cpu_percent,
             "mem_total": cb(c["memory_stats"]["limit"]),
             "mem_percent": (mem_current / mem_total) * 100.0,
