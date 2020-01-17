@@ -3,7 +3,9 @@ import socket
 import re
 import uuid
 import psutil
+import shutil
 
+from docker_data import cb
 
 def processors():
     """
@@ -18,17 +20,21 @@ def processors():
 
 
 def sys_info():
+    total, used, free = shutil.disk_usage("/")
     try:
         info = {
             "platform": platform.system(),
-            "platform-release": platform.release(),
-            "platform-version": platform.version(),
+            "platform_release": platform.release(),
+            "platform_version": platform.version(),
             "architecture": platform.machine(),
             "hostname": socket.gethostname(),
-            "ip-address": socket.gethostbyname(socket.gethostname()),
-            "mac-address": ":".join(re.findall("..", "%012x" % uuid.getnode())),
+            "ip_address": socket.gethostbyname(socket.gethostname()),
+            "mac_address": ":".join(re.findall("..", "%012x" % uuid.getnode())),
             "cpu": list(processors()),
-            "mem": str(round(psutil.virtual_memory().total / (1024.0 **3)))+"GB"
+            "mem": str(round(psutil.virtual_memory().total / (1024.0 **3)))+"GB",
+            "diskspace_total": cb(total),
+            "diskspace_used": cb(used),
+            "diskspace_free": cb(free),
         }
     except Exception:
         print("Oops! Something went wrong!")
