@@ -3,7 +3,6 @@
 import os
 import sys
 import json
-import docker
 import logging
 
 from bigid_data import bigid_release, config
