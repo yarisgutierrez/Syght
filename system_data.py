@@ -31,7 +31,7 @@ def sys_info():
             "ip_address": socket.gethostbyname(socket.gethostname()),
             "mac_address": ":".join(re.findall("..", "%012x" % uuid.getnode())),
             "cpu": list(processors()),
-            "mem": str(round(psutil.virtual_memory().total / (1024.0 **3)))+"GB",
+            "mem": cb(psutil.virtual_memory().total),
             "diskspace_total": cb(total),
             "diskspace_used": cb(used),
             "diskspace_free": cb(free),
