@@ -47,7 +47,7 @@ def bigid_release():
     url = bigid_url + "/about.html"
     headers = {}
     result = {
-        "release-info": requests.get(url,
+        "release-info": requests.get(url, verify=False,
                                      headers=headers).text.replace("\n",' ')
     }
     return result
