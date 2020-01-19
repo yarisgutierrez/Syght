@@ -21,6 +21,7 @@ def processors():
 
 def sys_info():
     total, used, free = shutil.disk_usage("/")
+    diskio = psutil.disk_io_counters
     try:
         info = {
             "platform": platform.system(),
@@ -35,6 +36,14 @@ def sys_info():
             "diskspace_total": cb(total),
             "diskspace_used": cb(used),
             "diskspace_free": cb(free),
+            "iostats": {
+                "io_disk_read": cb(diskio.read_bytes),
+                "io_disk_write": cb(diskio.write_bytes),
+                "io_disk_read_count": cb(diskio.read_count),
+                "io_disk_write_count": cb(diskio.write_count),
+                "io_disk_read_time": diskio.read_time/1000,
+                "io_disk_write_time": diskio.write_time/1000,
+            }
         }
     except Exception:
         print("Oops! Something went wrong!")
