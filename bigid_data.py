@@ -66,6 +66,7 @@ def config(source):
     url = bigid_api_url + "/" + source
     payload = {}
     headers = {"Authorization": token}
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = requests.request("GET", url, headers=headers, data=payload,
+                                verify=False)
     result = response.json()
     return result
