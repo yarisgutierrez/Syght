@@ -70,3 +70,15 @@ def config(source):
                                 verify=False)
     result = response.json()
     return result
+
+
+def bigid_logs():
+    """Retrieve BigID Services Logs
+    TODO: Enhance function to pull/request individual logs
+    """
+    log_url = bigid_api_url + "/services-logs"
+    token = bigid_token()
+    headers = {"Authorization": token}
+    response = requests.get(log_url, headers=headers, stream=True)
+    with open("services-logs.zip", "wb") as f:
+        f.write(response.content)

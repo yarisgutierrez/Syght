@@ -42,6 +42,10 @@ def main():
             "-j", "--dsar", action="store_true", default=None,
             help="Export DSAR configuration details"
             )
+    parser.add_argument(
+            "-l", "--logs", action="store_true", default=None,
+            help="Export BigID Service logs"
+            )
 
     args = parser.parse_args()
 
@@ -81,6 +85,11 @@ def main():
         # Export Container Information
         with open('containers.json', 'w', encoding='utf-8') as f:
             json.dump(list(container_stats()), f, ensure_ascii=False, indent=4)
+
+    if args.logs:
+        from bigid_data import bigid_logs
+        # Export Services logs
+        bigid_logs()
 
 
 if __name__ == "__main__":
