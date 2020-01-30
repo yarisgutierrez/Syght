@@ -21,7 +21,7 @@ def processors():
 
 def sys_info():
     total, used, free = shutil.disk_usage("/")
-    diskio = psutil.disk_io_counters
+    diskio = psutil.disk_io_counters()
     try:
         info = {
             "platform": platform.system(),
