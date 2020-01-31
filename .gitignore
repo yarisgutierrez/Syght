@@ -76,3 +76,5 @@ Temporary Items
 
 # The output file (for now...)
 *.zip
+
+dist
