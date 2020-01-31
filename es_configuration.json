@@ -1,0 +1,1549 @@
+{
+    "id_connections": [
+        {
+            "_id": "5b0b1d6e38791000104dc96e",
+            "custom_query_string": "SELECT guid, country, full_name, street_address, email FROM identities where country_code != 'US'",
+            "identities_force_sample": true,
+            "identities_sample_size": "",
+            "name": "Customers Identities",
+            "dsConnection": "Directory",
+            "location": "United States of America",
+            "db_table": "identities",
+            "unique_id": "guid",
+            "residency": "country",
+            "display_name": "full_name",
+            "attributes": [
+                {
+                    "columnName": "street_address",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "guid",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "full_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "99"
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "1"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "uuid": "afb204e0-0d47-11ea-823b-8909128a5940",
+            "last_failed_scan": "2018-05-28T01:04:47.135Z",
+            "scan_is_success": true,
+            "scan_timestamp": "2019-10-14T13:22:42.608Z",
+            "scan_num_of_objects": 0,
+            "test_is_success": true,
+            "test_timestamp": "2019-07-11T18:36:38.572Z",
+            "total_identities": 64022,
+            "last_successful_scan": "2020-01-30T07:27:14.805Z",
+            "last_successful_uuid": "afb204e0-0d47-11ea-823b-8909128a5940",
+            "skip_sample_size": 1000,
+            "skip_sample_start": false,
+            "use_random_sampling": false,
+            "id": "Customers Identities",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-30T12:12:45.566Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:26:36.551Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5b0b1e9238791000104dc96f",
+            "custom_query_string": "",
+            "identities_force_sample": true,
+            "identities_sample_size": "",
+            "name": "Medical Identities",
+            "dsConnection": "Medical",
+            "location": "United Kingdom",
+            "db_table": "patients",
+            "unique_id": "guid",
+            "residency": "residency",
+            "display_name": "friendly_name",
+            "attributes": [
+                {
+                    "columnName": "patient_ref",
+                    "selection": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "friendly_name",
+                    "overrideSureMatch": true,
+                    "selection": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "email_addr",
+                    "selection": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "ni_number",
+                    "selection": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "guid",
+                    "selection": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "birth_date",
+                    "selection": false,
+                    "columnIdentifiability": "99"
+                },
+                {
+                    "columnName": "residency",
+                    "selection": true,
+                    "columnIdentifiability": "0"
+                },
+                {
+                    "columnName": "gender",
+                    "selection": false,
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "uuid": "624d3d90-6213-11e8-9c8e-07df9caad5c6",
+            "total_identities": 20000,
+            "last_successful_scan": "2020-01-30T07:27:45.011Z",
+            "last_successful_uuid": "624d3d90-6213-11e8-9c8e-07df9caad5c6",
+            "id": "Medical Identities",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-30T12:13:05.564Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:27:25.708Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5be6e356a13d2b00125a48c3",
+            "custom_query_string": "SELECT guid, state, full_name, street_address, email FROM identities where country_code = 'US'",
+            "identities_force_sample": true,
+            "identities_sample_size": "",
+            "name": "Employee Identities",
+            "dsConnection": "Directory",
+            "location": "United States of America",
+            "db_table": "identities",
+            "unique_id": "guid",
+            "residency": "state",
+            "display_name": "full_name",
+            "attributes": [
+                {
+                    "columnName": "street_address",
+                    "selection": false,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "guid",
+                    "selection": false,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "email",
+                    "selection": false,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "full_name",
+                    "overrideSureMatch": true,
+                    "selection": false,
+                    "columnIdentifiability": "99"
+                },
+                {
+                    "columnName": "state",
+                    "selection": false,
+                    "columnIdentifiability": "5"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "uuid": "4b5d2680-e4f0-11e8-a50a-c7b9542e5a4c",
+            "total_identities": 1477,
+            "last_successful_scan": "2020-01-30T07:27:56.236Z",
+            "last_successful_uuid": "4b5d2680-e4f0-11e8-a50a-c7b9542e5a4c",
+            "id": "Employee Identities",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-30T10:03:56.404Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:27:45.567Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d8f52ebcc3781001ad10c84",
+            "custom_query_string": "SELECT street_address, email, user_id, last_name, first_name, university, post_code, country, race, gender, CONCAT(first_name, ' ', last_name) AS full_name FROM users",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Lineage",
+            "dsConnection": "Lineage",
+            "location": "United Kingdom",
+            "unique_id": "user_id",
+            "display_name": "full_name",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "user_id",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "street_address",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "last_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "99"
+                },
+                {
+                    "columnName": "first_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "93"
+                },
+                {
+                    "columnName": "university",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "86"
+                },
+                {
+                    "columnName": "post_code",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "50"
+                },
+                {
+                    "columnName": "country",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "13"
+                },
+                {
+                    "columnName": "race",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "9"
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "columnsTypes": [
+                {
+                    "columnName": "street_address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "race",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "user_id",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "university",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "post_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "last_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "first_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "11bcd430-e1ec-11e9-b225-812d942a98ad",
+            "total_identities": 1800,
+            "last_successful_scan": "2020-01-30T07:28:16.560Z",
+            "last_successful_uuid": "11bcd430-e1ec-11e9-b225-812d942a98ad",
+            "id": "Lineage",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-09-28T12:32:50.200Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:28:05.563Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d9d9a762cdaa2001c40d63c",
+            "custom_query_string": "",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Chinese Identities",
+            "dsConnection": "APAC Users",
+            "location": "Singapore",
+            "db_table": "userscn",
+            "unique_id": "resident_id",
+            "display_name": "full_name",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "address_full",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "resident_id",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "full_name",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "street_address",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "mobile",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "birthdate",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "98"
+                },
+                {
+                    "columnName": "postalcode",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "60"
+                },
+                {
+                    "columnName": "district",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "58"
+                },
+                {
+                    "columnName": "given_name",
+                    "columnIdentifiability": "39"
+                },
+                {
+                    "columnName": "given_name_alt",
+                    "columnIdentifiability": "37"
+                },
+                {
+                    "columnName": "city",
+                    "columnIdentifiability": "15"
+                },
+                {
+                    "columnName": "surname",
+                    "columnIdentifiability": "10"
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnIdentifiability": "9"
+                },
+                {
+                    "columnName": "province",
+                    "columnIdentifiability": "2"
+                },
+                {
+                    "columnName": "province_alt",
+                    "columnIdentifiability": "2"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnIdentifiability": "1"
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnIdentifiability": "0"
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "0",
+                    "selection": true
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "columnsTypes": [
+                {
+                    "columnName": "address_full",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "street_address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "birthdate",
+                    "columnType": "DATE"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "city",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "mobile",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "given_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "given_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "province",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "postalcode",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "district",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "resident_id",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "province_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "068cac70-ea70-11e9-8eeb-dbd48751dae2",
+            "test_is_success": true,
+            "test_timestamp": "2019-10-09T08:28:49.517Z",
+            "total_identities": 2000,
+            "last_successful_scan": "2020-01-30T07:28:36.287Z",
+            "last_successful_uuid": "068cac70-ea70-11e9-8eeb-dbd48751dae2",
+            "id": "Chinese Identities",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-10-09T08:28:49.517Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:28:25.554Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d9d9a922cdaa2001c40d63d",
+            "custom_query_string": "",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Hong Kong Identities",
+            "dsConnection": "APAC Users",
+            "location": "Singapore",
+            "db_table": "usershk",
+            "unique_id": "hkid",
+            "display_name": "full_name",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "hkid",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "address",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "mobile",
+                    "overrideSureMatch": false,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "full_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "99",
+                    "selection": true
+                },
+                {
+                    "columnName": "birthdate",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "98",
+                    "selection": false
+                },
+                {
+                    "columnName": "given_name_alt",
+                    "columnIdentifiability": "42",
+                    "selection": false
+                },
+                {
+                    "columnName": "given_name",
+                    "columnIdentifiability": "15",
+                    "selection": false
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnIdentifiability": "10",
+                    "selection": false
+                },
+                {
+                    "columnName": "surname",
+                    "columnIdentifiability": "9",
+                    "selection": false
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnIdentifiability": "1",
+                    "selection": false
+                },
+                {
+                    "columnName": "country_code",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "0",
+                    "selection": true
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "columnsTypes": [
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "birthdate",
+                    "columnType": "DATE"
+                },
+                {
+                    "columnName": "address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "mobile",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "given_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "hkid",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "given_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "1659a040-ea70-11e9-8eeb-dbd48751dae2",
+            "id": "Hong Kong Identities",
+            "test_is_success": true,
+            "test_timestamp": "2019-10-09T08:30:29.125Z",
+            "total_identities": 2000,
+            "last_successful_scan": "2020-01-30T07:28:56.358Z",
+            "last_successful_uuid": "1659a040-ea70-11e9-8eeb-dbd48751dae2",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-10-09T08:30:29.125Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:28:45.552Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d9d9b0f2cdaa2001c40d63e",
+            "custom_query_string": "",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Japanese  Identities",
+            "dsConnection": "APAC Users",
+            "location": "Singapore",
+            "db_table": "usersjp",
+            "unique_id": "my_number",
+            "display_name": "full_name",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "mobile",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "full_name",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "my_number",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "address",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "99",
+                    "selection": false
+                },
+                {
+                    "columnName": "postalcode",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "99",
+                    "selection": false
+                },
+                {
+                    "columnName": "birthdate",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "98",
+                    "selection": false
+                },
+                {
+                    "columnName": "last_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "66",
+                    "selection": false
+                },
+                {
+                    "columnName": "last_name_alt",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "62",
+                    "selection": false
+                },
+                {
+                    "columnName": "first_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "56",
+                    "selection": false
+                },
+                {
+                    "columnName": "first_name_alt",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "53",
+                    "selection": false
+                },
+                {
+                    "columnName": "prefecture",
+                    "columnIdentifiability": "5",
+                    "selection": false
+                },
+                {
+                    "columnName": "pref_alt",
+                    "columnIdentifiability": "5",
+                    "selection": false
+                },
+                {
+                    "columnName": "city",
+                    "columnIdentifiability": "5",
+                    "selection": false
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnIdentifiability": "1",
+                    "selection": false
+                },
+                {
+                    "columnName": "country_code",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "0",
+                    "selection": true
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "columnsTypes": [
+                {
+                    "columnName": "pref_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "birthdate",
+                    "columnType": "DATE"
+                },
+                {
+                    "columnName": "address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "prefecture",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "city",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "my_number",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "last_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "mobile",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "last_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "postalcode",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "first_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "first_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "9a61a230-ea6f-11e9-8eeb-dbd48751dae2",
+            "id": "Japanese  Identities",
+            "test_is_success": true,
+            "test_timestamp": "2019-10-09T08:34:09.156Z",
+            "total_identities": 2204,
+            "last_successful_scan": "2020-01-30T07:29:16.374Z",
+            "last_successful_uuid": "9a61a230-ea6f-11e9-8eeb-dbd48751dae2",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-10-09T08:34:09.156Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:29:05.551Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d9d9b952cdaa2001c40d63f",
+            "custom_query_string": "",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Thai Identities",
+            "dsConnection": "APAC Users",
+            "location": "Singapore",
+            "db_table": "usersth",
+            "unique_id": "identity_card",
+            "display_name": "full_name",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "mobile",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "full_name_en",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "identity_card",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "full_name",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "birthdate",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "96",
+                    "selection": false
+                },
+                {
+                    "columnName": "address",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "93",
+                    "selection": false
+                },
+                {
+                    "columnName": "first_name",
+                    "overrideSureMatch": false,
+                    "columnIdentifiability": "36",
+                    "selection": false
+                },
+                {
+                    "columnName": "first_name_en",
+                    "columnIdentifiability": "35"
+                },
+                {
+                    "columnName": "last_name",
+                    "overrideSureMatch": false,
+                    "columnIdentifiability": "22",
+                    "selection": false
+                },
+                {
+                    "columnName": "last_name_en",
+                    "columnIdentifiability": "22"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnIdentifiability": "1",
+                    "selection": false
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "0",
+                    "selection": true
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "country_code",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "columnsTypes": [
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "birthdate",
+                    "columnType": "DATE"
+                },
+                {
+                    "columnName": "address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "mobile",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "last_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "identity_card",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "first_name_en",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "full_name_en",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "last_name_en",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "first_name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "c4dc1d60-ea6f-11e9-8eeb-dbd48751dae2",
+            "id": "Thai Identities",
+            "test_is_success": true,
+            "test_timestamp": "2019-10-09T08:34:09.156Z",
+            "total_identities": 2000,
+            "last_successful_scan": "2020-01-30T07:29:36.285Z",
+            "last_successful_uuid": "c4dc1d60-ea6f-11e9-8eeb-dbd48751dae2",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-10-09T08:34:49.109Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:29:25.548Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5d9d9bf02cdaa2001c40d640",
+            "custom_query_string": "",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "name": "Korean  Identities",
+            "dsConnection": "APAC Users",
+            "location": "Singapore",
+            "db_table": "userskr",
+            "unique_id": "resident_reg_number",
+            "display_name": "fullname",
+            "residency": "country",
+            "attributes": [
+                {
+                    "columnName": "email",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "address",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "fullname",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "resident_reg_number",
+                    "columnIdentifiability": "100",
+                    "selection": true
+                },
+                {
+                    "columnName": "fullname_alt",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "mobile",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "100",
+                    "selection": false
+                },
+                {
+                    "columnName": "birthdate",
+                    "overrideSureMatch": true,
+                    "columnIdentifiability": "95",
+                    "selection": false
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnIdentifiability": "19"
+                },
+                {
+                    "columnName": "surname",
+                    "columnIdentifiability": "19"
+                },
+                {
+                    "columnName": "firstname_alt",
+                    "columnIdentifiability": "13"
+                },
+                {
+                    "columnName": "firstname",
+                    "columnIdentifiability": "12"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnIdentifiability": "1",
+                    "selection": false
+                },
+                {
+                    "columnName": "country_code",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "gender",
+                    "columnIdentifiability": "0",
+                    "selection": false
+                },
+                {
+                    "columnName": "country",
+                    "columnIdentifiability": "0",
+                    "selection": true
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": false,
+            "columnsTypes": [
+                {
+                    "columnName": "country",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "firstname",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "birthdate",
+                    "columnType": "DATE"
+                },
+                {
+                    "columnName": "address",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "gender",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "resident_reg_number",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "firstname_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "fullname_alt",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "mobile",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "country_code",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "bloodtype",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "surname",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "fullname",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "email",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "f8895510-ea6f-11e9-8eeb-dbd48751dae2",
+            "id": "Korean  Identities",
+            "test_is_success": true,
+            "test_timestamp": "2019-10-09T08:34:09.156Z",
+            "total_identities": 2000,
+            "last_successful_scan": "2020-01-30T07:29:56.222Z",
+            "last_successful_uuid": "f8895510-ea6f-11e9-8eeb-dbd48751dae2",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2019-10-09T08:36:19.122Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:29:45.545Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5e1ef76dc60b5c001ad5844c",
+            "custom_query_string": "SELECT name, customer_id, 'GBR' AS residency FROM customers",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "unique_id_delimeter": ",",
+            "name": "Insurance Customers",
+            "dsConnection": "Insurance CRM",
+            "location": "United Kingdom",
+            "unique_id": "customer_id",
+            "display_name": "name",
+            "residency": "residency",
+            "attributes": [
+                {
+                    "columnName": "customer_id",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "name",
+                    "columnIdentifiability": "98"
+                },
+                {
+                    "columnName": "residency",
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "columnsTypes": [
+                {
+                    "columnName": "residency",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "customer_id",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "31231a20-378a-11ea-aa98-1faed5fcc71f",
+            "total_identities": 10000,
+            "last_successful_scan": "2020-01-30T07:30:17.966Z",
+            "last_successful_uuid": "31231a20-378a-11ea-aa98-1faed5fcc71f",
+            "id": "Insurance Customers",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-15T11:28:39.206Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:30:05.548Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5e1ef7aac60b5c001ad5844d",
+            "custom_query_string": "SELECT policy_number, CONCAT(policy_number, \" (\", REPLACE(policy_type, \"_\", \" \"), \")\") AS policy_display_name, 'GBR' AS residency FROM policies",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "unique_id_delimeter": ",",
+            "name": "Insurance Policies",
+            "dsConnection": "Insurance CRM",
+            "location": "United Kingdom",
+            "unique_id": "policy_number",
+            "display_name": "policy_display_name",
+            "residency": "residency",
+            "attributes": [
+                {
+                    "columnName": "policy_number",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "policy_display_name",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "residency",
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "columnsTypes": [
+                {
+                    "columnName": "residency",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "policy_number",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "policy_display_name",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "55a2ab40-378a-11ea-aa98-1faed5fcc71f",
+            "total_identities": 29771,
+            "last_successful_scan": "2020-01-30T07:30:42.628Z",
+            "last_successful_uuid": "55a2ab40-378a-11ea-aa98-1faed5fcc71f",
+            "id": "Insurance Policies",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-15T11:29:38.843Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:30:25.553Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5e1ef7dec60b5c001ad5844e",
+            "custom_query_string": "SELECT * FROM inactive_policies",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "unique_id_delimeter": ",",
+            "name": "Insurance Expired Policies",
+            "dsConnection": "Insurance CRM",
+            "location": "United Kingdom",
+            "unique_id": "policy_number",
+            "display_name": "policy_display_name",
+            "residency": "residency",
+            "attributes": [
+                {
+                    "columnName": "policy_number",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "policy_display_name",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "residency",
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "columnsTypes": [
+                {
+                    "columnName": "residency",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "policy_number",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "policy_display_name",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "74305300-378a-11ea-aa98-1faed5fcc71f",
+            "total_identities": 18176,
+            "last_successful_scan": "2020-01-30T07:30:59.733Z",
+            "last_successful_uuid": "74305300-378a-11ea-aa98-1faed5fcc71f",
+            "id": "Insurance Expired Policies",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-15T11:30:28.835Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:30:45.549Z",
+                "num_of_object": 0
+            }
+        },
+        {
+            "_id": "5e1ef812c60b5c001ad5844f",
+            "custom_query_string": "SELECT customer_id, name, 'GBR' AS residency FROM inactive_customers",
+            "identities_force_sample": false,
+            "identities_sample_size": "",
+            "skip_sample_start": false,
+            "skip_sample_size": 1000,
+            "use_random_sampling": false,
+            "unique_id_delimeter": ",",
+            "name": "Insurance Expired Customers",
+            "dsConnection": "Insurance CRM",
+            "location": "United Kingdom",
+            "unique_id": "customer_id",
+            "display_name": "name",
+            "residency": "residency",
+            "attributes": [
+                {
+                    "columnName": "customer_id",
+                    "columnIdentifiability": "100"
+                },
+                {
+                    "columnName": "name",
+                    "columnIdentifiability": "98"
+                },
+                {
+                    "columnName": "residency",
+                    "columnIdentifiability": "0"
+                }
+            ],
+            "type": "ds-connection",
+            "enabled": "yes",
+            "isCustomQueryString": true,
+            "columnsTypes": [
+                {
+                    "columnName": "residency",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "name",
+                    "columnType": "VARCHAR"
+                },
+                {
+                    "columnName": "customer_id",
+                    "columnType": "VARCHAR"
+                }
+            ],
+            "uuid": "932e48c0-378a-11ea-aa98-1faed5fcc71f",
+            "total_identities": 2945,
+            "last_successful_scan": "2020-01-30T07:31:16.307Z",
+            "last_successful_uuid": "932e48c0-378a-11ea-aa98-1faed5fcc71f",
+            "id": "Insurance Expired Customers",
+            "connectionStatusTest": {
+                "is_success": true,
+                "last_connection": "2020-01-15T11:31:18.834Z",
+                "num_of_object": 0
+            },
+            "connectionStatusScan": {
+                "is_success": true,
+                "last_connection": "2020-01-30T07:31:05.543Z",
+                "num_of_object": 0
+            }
+        }
+    ]
+}
