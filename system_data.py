@@ -4,6 +4,7 @@ import re
 import uuid
 import psutil
 import shutil
+import os
 
 from docker_data import cb
 
@@ -18,6 +19,9 @@ def processors():
         proc = (str(index) + ": " + item)
         yield proc
 
+#def top_info():
+    #top_strobe = os.popen('top -n 1 -b').read()
+    #yield top_strobe
 
 def sys_info():
     total, used, free = shutil.disk_usage("/")
@@ -27,6 +31,7 @@ def sys_info():
             "platform": platform.system(),
             "platform_release": platform.release(),
             "platform_version": platform.version(),
+            "platform_uname": platform.uname(),
             "architecture": platform.machine(),
             "hostname": socket.gethostname(),
             "ip_address": socket.gethostbyname(socket.gethostname()),
