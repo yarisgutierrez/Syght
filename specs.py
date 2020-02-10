@@ -18,13 +18,38 @@ def env_var():
         yield(f'{k}: {v}')
 
 
+def progressBar(iteration,total,prefix='',suffix='',decimals=1,length=50,
+                fill='█',printEnd="\r"):
+    """
+    Call in a looop to create terminal progress bar
+    @params:
+    iteration   -   Required : current iteration (int)
+    total       -   Required : total iterations (int)
+    prefix      -   Optional : prefix string (Str)
+    suffix      -   Optional : suffix string (Str)
+    decimas     -   Optional : positive number of decimals in percent
+                               complete (int)
+    length      -   Optional : character length of bar (int)
+    printEnd    -   Optoinal : end character (e.g. "\r","\r\n") (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * \
+                                                     (iteration/float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = printEnd)
+    # Print new Line on Complete
+    if iteration == total:
+        print()
+
+
 def main():
     tmp_output_dir = "./Syght_output"
     output_zip_filename = "./Syght_output.zip"
     try:
         os.mkdir(tmp_output_dir)
     except OSError:
-        # Don't worry about the error if the dir exists. We can always use the existing data! 
+        # Don't worry about the error if the dir exists. We can always use
+        # the existing data!
         print ("")
 
     parser = argparse.ArgumentParser(
@@ -55,53 +80,80 @@ def main():
             help="Export BigID Service logs"
             )
 
+
+    args = parser.parse_args()
+
     if len(sys.argv)==1:
         parser.print_help(sys.stderr)
         sys.exit(1)
 
-    args = parser.parse_args()
+    # May need to check that the length corresponds only to the number of arg
+    i, l = 0, len(vars(args))
 
     if args.system:
         from bigid_data import bigid_release, config
+        print("\nFetching System Information...")
         env_data = {
             'bigid_release': bigid_release(),
             'system_information': list(sys_info()),
             'environment_variables': list(env_var())
         }
         # Export Environment Information
-        with open(tmp_output_dir + '/environment.json', 'w', encoding='utf-8') as f:
+        with open(tmp_output_dir + '/environment.json', 'w', \
+                  encoding='utf-8') as f:
             json.dump(env_data, f, ensure_ascii=False, indent=4)
+        i = l
+        progressBar(i, l)
 
     if args.datasource:
         from bigid_data import config
+        print("\nFetching Data Source Configuration...")
         # Export Data Sources
-        with open(tmp_output_dir + '/ds_configuration.json', 'w', encoding='utf-8') as f:
+        with open(tmp_output_dir + '/ds_configuration.json', 'w', \
+                  encoding='utf-8') as f:
             json.dump(config("ds_connections"), f, ensure_ascii=False,
                       indent=4)
+        i = l
+        progressBar(i, l)
 
     if args.entitysource:
         from bigid_data import config
+        print("\nFetching Entity Source Configuration...")
         # Export Entity Sources
-        with open(tmp_output_dir + '/es_configuration.json', 'w', encoding='utf-8') as f:
+        with open(tmp_output_dir + '/es_configuration.json', 'w', \
+                  encoding='utf-8') as f:
             json.dump(config("id_connections"), f, ensure_ascii=False,\
                       indent=4)
+        i = l
+        progressBar(i, l)
 
     if args.dsar:
         from bigid_data import config
+        print("\nFetching SAR Configuration...")
         # Export DSAR configuration
-        with open(tmp_output_dir + '/sar_configuration.json', 'w', encoding='utf-8') as f:
+        with open(tmp_output_dir + '/sar_configuration.json', 'w', \
+                  encoding='utf-8') as f:
             json.dump(config("sar/config"), f, ensure_ascii=False,\
                        indent=4)
+        i = l
+        progressBar(i, l)
 
     if args.containers:
+        print("\nFetching Docker Containers Statistics...")
         # Export Container Information
-        with open(tmp_output_dir + '/containers.json', 'w', encoding='utf-8') as f:
+        with open(tmp_output_dir + '/containers.json', 'w', \
+                  encoding='utf-8') as f:
             json.dump(list(container_stats()), f, ensure_ascii=False, indent=4)
+        i = l
+        progressBar(i, l)
 
     if args.logs:
         from bigid_data import bigid_logs
+        print("\nFetching BigID Service Logs...")
         # Export Services logs
         bigid_logs()
+        i = l
+        progressBar(i, l)
 
     shutil.make_archive("Syght_output", 'zip', tmp_output_dir)
 
@@ -109,7 +161,7 @@ def main():
     try:
         shutil.rmtree(tmp_output_dir)
     except OSError:
-        # WHo cares?
+        # Who cares?
         print ("")
 
 
