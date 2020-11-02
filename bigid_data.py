@@ -13,7 +13,7 @@ if "BIGID_UI_HOST_EXT" in list(os.environ):
     bigid_url = os.environ["BIGID_UI_HOST_EXT"]
     bigid_api_url = bigid_url + "/api/v1"
 else:
-    bigid_url = input("BigID URL: ")
+    bigid_url = input("BigID URL (https://<host>): ")
     bigid_api_url = bigid_url + "/api/v1"
 
 if "BIGID_USER" in list(os.environ):

@@ -5,6 +5,7 @@ import uuid
 import psutil
 import shutil
 import os
+import subprocess
 
 from docker_data import cb
 
@@ -26,9 +27,11 @@ def processors():
 def sys_info():
     total, used, free = shutil.disk_usage("/")
     diskio = psutil.disk_io_counters()
+
     try:
         info = {
             "platform": platform.system(),
+            "OS dist" : platform.dist(),
             "platform_release": platform.release(),
             "platform_version": platform.version(),
             "platform_uname": platform.uname(),
@@ -48,6 +51,19 @@ def sys_info():
                 "io_disk_write_count": cb(diskio.write_count),
                 "io_disk_read_time": diskio.read_time/1000,
                 "io_disk_write_time": diskio.write_time/1000,
+            "ulimits" : os.popen('ulimit -a').read(),
+            "top" : os.popen('top -n 1 -b | head -20').read(),
+            "free" : os.popen('free').read(),
+            "lscpu" : os.popen('lscpu').read(),
+            "df" : os.popen('df -m').read(),
+            "java_heap_ps" : os.popen('ps -ef | grep java').read(),
+            "docker_version" : os.popen('docker --version').read(),
+            "docker-compose_version" : os.popen('docker-compose --version').read(),
+            "docker_ps_a" : os.popen('docker ps -a').read(),
+            "docker_images" : os.popen('docker images -a').read(),
+            "docker_stats" : os.popen('docker stats -a --no-stream').read(),
+            "docker_network" : os.popen('docker network ls').read(),
+            "docker_scanner_patches" : os.popen('docker exec bigid-scanner ls -l /usr/local/shared-libs').read(),
             }
         }
     except Exception:

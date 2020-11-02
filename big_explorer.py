@@ -13,6 +13,9 @@ from docker_data import calc_cpu, calc_cpu2, calc_blkio_bytes,\
 
 logger = logging.getLogger(__name__)
 
+big_explorer_version = "0.1.1"
+big_explorer_output_version = "0.1.1"
+
 def env_var():
     for k, v in os.environ.items():
         yield(f'{k}: {v}')
@@ -43,8 +46,8 @@ def progressBar(iteration,total,prefix='',suffix='',decimals=1,length=50,
 
 
 def main():
-    tmp_output_dir = "./Syght_output"
-    output_zip_filename = "./Syght_output.zip"
+    tmp_output_dir = "./big_explorer_output"
+    output_zip_filename = "./big_explorer_output.zip"
     try:
         os.mkdir(tmp_output_dir)
     except OSError:
@@ -68,17 +71,21 @@ def main():
             help="Export Data Source configuration details"
             )
     parser.add_argument(
-            "-e", "--entitysource", action="store_true", default=None,
-            help="Export Entity Source Configuration details"
+            "-e", "--correlationset", action="store_true", default=None,
+            help="Export Correlation Set Configuration details"
             )
     parser.add_argument(
             "-j", "--dsar", action="store_true", default=None,
             help="Export DSAR configuration details"
             )
     parser.add_argument(
-            "-l", "--logs", action="store_true", default=None,
-            help="Export BigID Service logs"
+            "-a", "--all", action="store_true", default=None,
+            help="Collect all data"
             )
+    #parser.add_argument(
+            #"-l", "--logs", action="store_true", default=None,
+            #help="Export BigID Service logs"
+            #)
 
 
     args = parser.parse_args()
@@ -116,11 +123,11 @@ def main():
         i = l
         progressBar(i, l)
 
-    if args.entitysource:
+    if args.correlationset:
         from bigid_data import config
-        print("\nFetching Entity Source Configuration...")
-        # Export Entity Sources
-        with open(tmp_output_dir + '/es_configuration.json', 'w', \
+        print("\nFetching Correlation Set Configuration...")
+        # Export Correlation Set
+        with open(tmp_output_dir + '/cs_configuration.json', 'w', \
                   encoding='utf-8') as f:
             json.dump(config("id_connections"), f, ensure_ascii=False,\
                       indent=4)
@@ -147,15 +154,68 @@ def main():
         i = l
         progressBar(i, l)
 
-    if args.logs:
-        from bigid_data import bigid_logs
-        print("\nFetching BigID Service Logs...")
+    #if args.logs:
+        #from bigid_data import bigid_logs
+        #print("\nFetching BigID Service Logs...")
         # Export Services logs
-        bigid_logs()
+        #bigid_logs()
+        #i = l
+        #progressBar(i, l)
+
+    if args.all:
+        from bigid_data import bigid_release, config
+        print("\nFetching System Information...")
+        env_data = {
+            'bigid_release': bigid_release(),
+            'system_information': list(sys_info()),
+            'environment_variables': list(env_var())
+        }
+        # Export Environment Information
+        with open(tmp_output_dir + '/environment.json', 'w', \
+                  encoding='utf-8') as f:
+            json.dump(env_data, f, ensure_ascii=False, indent=4)
+        i = l
+        progressBar(i, l)
+        
+        from bigid_data import config
+        print("\nFetching Data Source Configuration...")
+        # Export Data Sources
+        with open(tmp_output_dir + '/ds_configuration.json', 'w', \
+                  encoding='utf-8') as f:
+            json.dump(config("ds_connections"), f, ensure_ascii=False,
+                      indent=4)
+        i = l
+        progressBar(i, l)
+        
+        from bigid_data import config
+        print("\nFetching Correlation Set Configuration...")
+        # Export Correlation Set
+        with open(tmp_output_dir + '/cs_configuration.json', 'w', \
+                  encoding='utf-8') as f:
+            json.dump(config("id_connections"), f, ensure_ascii=False,\
+                      indent=4)
+        i = l
+        progressBar(i, l)
+        
+        from bigid_data import config
+        print("\nFetching SAR Configuration...")
+        # Export DSAR configuration
+        with open(tmp_output_dir + '/sar_configuration.json', 'w', \
+                  encoding='utf-8') as f:
+            json.dump(config("sar/config"), f, ensure_ascii=False,\
+                       indent=4)
+        i = l
+        progressBar(i, l)
+        
+        print("\nFetching Docker Containers Statistics...")
+        # Export Container Information
+        with open(tmp_output_dir + '/containers.json', 'w', \
+                  encoding='utf-8') as f:
+            json.dump(list(container_stats()), f, ensure_ascii=False, indent=4)
         i = l
         progressBar(i, l)
 
-    shutil.make_archive("Syght_output", 'zip', tmp_output_dir)
+    shutil.make_archive("big_explorer_output", 'zip', tmp_output_dir)
 
     # rm the the tmp output dir
     try:

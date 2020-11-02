@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['specs.py'],
-             pathex=['/home/yaris/Code/Projects/Syght'],
+             pathex=['/root/Syght/Syght'],
              binaries=[],
              datas=[],
              hiddenimports=[],
